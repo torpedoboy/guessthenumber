@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego del Adivinador</title>
+</head>
+<body>
+    <h1>Juego del Adivinador</h1>
+    <p>¡Intenta adivinar el número entre 1 y 100!</p>
+    
+    <input type="number" id="userInput" placeholder="Introduce tu número">
+    <button onclick="checkNumber()">Adivinar</button>
+    
+    <p id="hint"></p>
+    
+    <script>
+        let secretNumber = Math.floor(Math.random() * 100) + 1;
+        let attempts = 0;
+
+        function checkNumber() {
+            const userInput = document.getElementById("userInput").value;
+            attempts++;
+
+            if (userInput < secretNumber) {
+                document.getElementById("hint").innerText = `¡Ups! Intenta un número más grande. Intentos: ${attempts}`;
+            } else if (userInput > secretNumber) {
+                document.getElementById("hint").innerText = `¡Vaya! Intenta un número más pequeño. Intentos: ${attempts}`;
+            } else {
+                document.getElementById("hint").innerText = `¡Lo lograste, bro! El número era ${secretNumber}. Lo adivinaste en ${attempts} intentos.`;
+            }
+        }
+    </script>
+</body>
+</html>
